@@ -37,13 +37,15 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/category/bolsos" className="nav-link" >
+              <Link to="/category/bolsos" className="nav-link">
                 Bolsos
               </Link>
             </li>
           </ul>
         </div>
-        <CartWidge/>
+        <Link to="/cart">
+          <CartWidge />
+        </Link>
       </div>
     </nav>
   );

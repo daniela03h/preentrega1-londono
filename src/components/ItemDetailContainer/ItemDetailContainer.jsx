@@ -1,22 +1,25 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { mFetch } from "../../utils/mockFetch"
-import ItemDetail from "./ItemDetail/ItemDetail"
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ItemDetail from "./ItemDetail/ItemDetail";
 
 const ItemDetailContainer = () => {
-  const [product, setProduct] = useState({})
-  const {pid} = useParams()
+  const [product, setProduct] = useState({});
+  const { pid } = useParams();
 
-  useEffect(() => { 
-    mFetch(Number(pid))
-    .then(resp => setProduct(resp))
-    .catch(err => console.log(err))
-  }, [])
+  useEffect(() => {
+    const db = getFirestore();
+    const queryDoc = doc(db, "products", pid);
+    getDoc(queryDoc)
+      .then((results) => setProduct({ id: results.id, ...results.data() }))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <>
-    <ItemDetail product={product}/>
+      <ItemDetail product={product} />
     </>
-  )
-}
+  );
+};
 
-export default ItemDetailContainer
+export default ItemDetailContainer;

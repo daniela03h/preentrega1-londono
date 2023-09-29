@@ -1,7 +1,7 @@
 {
   "name": "ecommerse-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.1",
+    "firebase": "^10.4.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
     "react-router-dom": "^6.15.0"
   },
   "devDependencies": {
